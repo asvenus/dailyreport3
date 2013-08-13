@@ -1,4 +1,4 @@
 <%= @user.name %>,
 Thank you for registering! 
 
-<p><%= link_to "Click link to activation and change password user", edit_user_url(@user, :host => "localhost:3000") %></p>
+<p><%= link_to "Click link to activate user", user_url(@user, :host => "localhost:3000") %></p>

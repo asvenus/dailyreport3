@@ -3,8 +3,17 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
 
   def index
-    
+   @users=User.all
+    filename = "data_users.xls"
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{filename}\"" }
+      format.xml  { render :xml => @users }
+    end
+   
   end
+   
+  
 
   def new
   	#@password = SecureRandom.hex(10)
@@ -13,7 +22,16 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@users = User.paginate(page: params[:page])
+  	@user = User.find_by(id:params[:id])
+    if !@user.active?
+    @user.toggle!(:active)    # change attribute active false->true // active User
+    flash[:success]="Users actived!"
+    sign_in @user 
+    redirect_to root_url
+    else 
+      redirect_to root_url
+    end
+
   end
 
   def create
@@ -27,13 +45,11 @@ class UsersController < ApplicationController
   		render 'new'
   	end
   end
-
+  
   def edit
   	@user = User.find_by(id: params[:id])
 
-    @user.toggle!(:active) # change attribute active false->true // active User
-
-
+   
   end
 
   def update   #for admin 

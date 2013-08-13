@@ -1,0 +1,19 @@
+ <%= link_to 'Export XLS', url_for(:format => 'xls') %>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>manager Date</th>
+    <th>active</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.active %></td>
+  </tr>
+  <% end %>
+</table>
+
+

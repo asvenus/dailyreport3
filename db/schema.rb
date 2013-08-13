@@ -11,11 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20130812064114) do
 
-
-    create_table "answers", force: true do |t|
+  create_table "answers", force: true do |t|
     t.integer  "catalog_id"
     t.integer  "user_id"
     t.string   "content"
@@ -40,15 +38,15 @@ ActiveRecord::Schema.define(version: 20130812064114) do
 
   create_table "users", force: true do |t|
     t.string  "name"
-    t.string   "email"
-    t.boolean  "manager_group",   default: false
-    t.boolean  "admin",           default: false
-    t.boolean  "active",          default: false
-    t.integer  "group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "password_digest"
-    t.string   "remember_token"
+    t.string  "email"
+    t.boolean "manager_group",   default: false
+    t.boolean "admin",           default: false
+    t.boolean "active",          default: false
+    t.integer "group_id"
+    t.string  "password_digest"
+    t.string  "remember_token"
   end
+
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+
 end

@@ -1,0 +1,56 @@
+<!--<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Manager_Group</Data></Cell>
+        <Cell><Data ss:Type="String">Active</Data></Cell>
+      </Row>
+    <% @users.each do |user| %>
+      <Row>
+
+        <Cell><Data ss:Type="Number"><%= user.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= user.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= user.email %></Data></Cell>
+
+        <Cell><Data ss:Type="String"><%= user.manager_group %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= user.active %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+    
+  </Worksheet>
+</Workbook>-->
+
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Group MAnager</th>
+    <th>Active</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.manager_group %></td>
+    <td><%= user.active %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
